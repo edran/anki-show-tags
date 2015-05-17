@@ -4,14 +4,17 @@ from aqt.qt import *
 from aqt.reviewer import Reviewer
 
 
-def showTags():
+def getTags():
     # global note
     note = mw.reviewer.card.note()
     c = str(note.stringTags())
-    # c = Reviewer.card
-    # show a message box
-    showInfo("Tag: %s" % c)
+    return c
 
+
+def showTags():
+    # global note
+    c = getTags()
+    showInfo("Tag: %s" % c)
 
 action = QAction("Show tags", mw)
 mw.connect(action, SIGNAL("triggered()"), showTags)
